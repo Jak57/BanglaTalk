@@ -1,0 +1,5 @@
+KEY = {
+    "SERVER_IP": "127.0.0.1",
+    "SERVER_PORT": 6000,
+    "CLIENT_RECV_PROT": 5000
+}

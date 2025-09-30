@@ -1,0 +1,6 @@
+numpy
+soundfile
+sounddevice
+opuslib
+sounddevice
+pyrnnoise

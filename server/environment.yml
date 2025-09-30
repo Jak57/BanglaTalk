@@ -1,0 +1,22 @@
+name: server_env
+channels:
+  - defaults
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip
+  - numpy==1.26.0
+  - librosa
+  - pip:
+      - soundfile
+      - silero-vad
+      - torch==2.6.0
+      - torchvision==0.21.0
+      - torchaudio==2.6.0
+      - transformers>=4.36.0
+      - openai
+      - opuslib
+      - pyctcdecode
+      - https://github.com/kpu/kenlm/archive/master.zip
+      - TTS
+
