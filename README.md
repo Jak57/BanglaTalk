@@ -1,6 +1,24 @@
 # BanglaTalk
 This repository is the implementation of the paper ['BanglaTalk: Towards Real-Time Speech Assistance for Bengali Regional Dialects'](https://arxiv.org/abs/2510.06188).
 
+## Table of Contents
+* [Setup Client Environment](#setup-client-environment)
+* [Download BRDialect ASR Model](#download-brdialect-asr-model)
+* [Download VITS TTS Model](#download-vits-tts-model)
+* [Setup Server Environment](#setup-server-environment)
+
+## Setup Client Environment
+Todo
+
+## Download BRDialect ASR Model
+Todo
+
+## Download VITS TTS Model
+Todo
+
+## Setup Server Environment
+Todo
+  
 <!--
 ## Dataset Overview
 
