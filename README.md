@@ -163,6 +163,10 @@ Running the above mentioned commands will generate result files under the `resul
 
 -->
 
+## BRDialect ASR System
+The **BRDialect** ASR model is now available in HuggingFace.<br>
+Link: https://huggingface.co/Jakir057/BRDialect
+
 ## Citation
 
 If you use our code or findings in your research, please cite us as:
