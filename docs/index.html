@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Primary Meta Tags -->
+  <meta name="title"
+    content="If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition">
+  <meta name="description"
+    content="We present a novel approach to verifying claims through presupposition-free question decomposition. Our method decomposes a question into a set of presupposition-free sub-questions and verifies each sub-question independently. This allows us to verify claims that are not possible to verify using traditional methods.">
+  <meta name="keywords"
+    content="presupposition, question decomposition, verification, claims, natural language processing">
+  <meta name="author" content="Shubhashis Roy Dipta, Frank Ferraro">
+  <meta name="robots" content="index, follow">
+  <meta name="language" content="English">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="University of Maryland, Baltimore County">
+  <meta property="og:title"
+    content="If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition">
+  <meta property="og:description"
+    content="We present a novel approach to verifying claims through presupposition-free question decomposition. Our method decomposes a question into a set of presupposition-free sub-questions and verifies each sub-question independently. This allows us to verify claims that are not possible to verify using traditional methods.">
+  <meta property="og:url" content="https://dipta007.github.io/de-Presuppose/">
+  <!-- TODO: Create a 1200x630px preview image and update path -->
+  <meta property="og:image" content="https://YOUR_DOMAIN.com/static/images/social_preview.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="PAPER_TITLE - Research Preview">
+  <meta property="article:published_time" content="2024-01-01T00:00:00.000Z">
+  <meta property="article:author" content="FIRST_AUTHOR_NAME">
+  <meta property="article:section" content="Research">
+  <meta property="article:tag" content="KEYWORD1">
+  <meta property="article:tag" content="KEYWORD2">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@iamdipta007">
+  <meta name="twitter:creator" content="@iamdipta007">
+  <meta name="twitter:title"
+    content="If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition">
+  <meta name="twitter:description"
+    content="We present a novel approach to verifying claims through presupposition-free question decomposition. Our method decomposes a question into a set of presupposition-free sub-questions and verifies each sub-question independently. This allows us to verify claims that are not possible to verify using traditional methods.">
+  <meta name="twitter:image" content="https://dipta007.github.io/de-Presuppose/static/images/social_preview.png">
+  <meta name="twitter:image:alt"
+    content="If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition - Research Preview">
+
+  <!-- Academic/Research Specific -->
+  <meta name="citation_title"
+    content="If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition">
+  <meta name="citation_author" content="Roy Dipta, Shubhashis">
+  <meta name="citation_author" content="Ferraro, Frank">
+  <meta name="citation_publication_date" content="2025">
+  <meta name="citation_conference_title" content="*SEM 2025">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2508.16838">
+
+  <!-- Additional SEO -->
+  <meta name="theme-color" content="#2563eb">
+  <meta name="msapplication-TileColor" content="#2563eb">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+  <!-- Preconnect for performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://ajax.googleapis.com">
+  <link rel="preconnect" href="https://documentcloud.adobe.com">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+
+
+  <title>If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition</title>
+
+  <!-- Favicon and App Icons -->
+  <link rel="icon" type="image/x-icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/favicon.ico">
+
+  <!-- Critical CSS - Load synchronously -->
+  <link rel="stylesheet" href="static/css/bulma.min.css">
+  <link rel="stylesheet" href="static/css/index.css">
+
+  <!-- Non-critical CSS - Load asynchronously -->
+  <link rel="preload" href="static/css/bulma-carousel.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/bulma-slider.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="static/css/fontawesome.all.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
+  <!-- Fallback for browsers that don't support preload -->
+  <noscript>
+    <link rel="stylesheet" href="static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  </noscript>
+
+  <!-- Fonts - Optimized loading -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Defer non-critical JavaScript -->
+  <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="https://documentcloud.adobe.com/view-sdk/main.js"></script>
+  <script defer src="static/js/fontawesome.all.min.js"></script>
+  <script defer src="static/js/bulma-carousel.min.js"></script>
+  <script defer src="static/js/bulma-slider.min.js"></script>
+  <script defer src="static/js/index.js"></script>
+
+  <!-- Structured Data for Academic Papers -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "PAPER_TITLE",
+    "description": "BRIEF_DESCRIPTION_OF_YOUR_RESEARCH_CONTRIBUTION_AND_FINDINGS",
+    "author": [
+      {
+        "@type": "Person",
+        "name": "FIRST_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      },
+      {
+        "@type": "Person",
+        "name": "SECOND_AUTHOR_NAME",
+        "affiliation": {
+          "@type": "Organization",
+          "name": "INSTITUTION_NAME"
+        }
+      }
+    ],
+    "datePublished": "2024-01-01",
+    "publisher": {
+      "@type": "Organization",
+      "name": "CONFERENCE_OR_JOURNAL_NAME"
+    },
+    "url": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE",
+    "image": "https://YOUR_DOMAIN.com/static/images/social_preview.png",
+    "keywords": ["KEYWORD1", "KEYWORD2", "KEYWORD3", "machine learning", "computer vision"],
+    "abstract": "FULL_ABSTRACT_TEXT_HERE",
+    "citation": "BIBTEX_CITATION_HERE",
+    "isAccessibleForFree": true,
+    "license": "https://creativecommons.org/licenses/by/4.0/",
+    "mainEntity": {
+      "@type": "WebPage",
+      "@id": "https://YOUR_DOMAIN.com/YOUR_PROJECT_PAGE"
+    },
+    "about": [
+      {
+        "@type": "Thing",
+        "name": "RESEARCH_AREA_1"
+      },
+      {
+        "@type": "Thing", 
+        "name": "RESEARCH_AREA_2"
+      }
+    ]
+  }
+  </script>
+
+  <!-- Website/Organization Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "INSTITUTION_OR_LAB_NAME",
+    "url": "https://YOUR_INSTITUTION_WEBSITE.com",
+    "logo": "https://YOUR_DOMAIN.com/static/images/favicon.ico",
+    "sameAs": [
+      "https://twitter.com/YOUR_TWITTER_HANDLE",
+      "https://github.com/YOUR_GITHUB_USERNAME"
+    ]
+  }
+  </script>
+</head>
+
+<body>
+
+
+  <!-- Scroll to Top Button -->
+  <button class="scroll-to-top" onclick="scrollToTop()" title="Scroll to top" aria-label="Scroll to top">
+    <i class="fas fa-chevron-up"></i>
+  </button>
+
+  <!-- More Works Dropdown -->
+  <div class="more-works-container">
+    <button class="more-works-btn" onclick="toggleMoreWorks()" title="View More Works from Our Lab">
+      <i class="fas fa-flask"></i>
+      More Works
+      <i class="fas fa-chevron-down dropdown-arrow"></i>
+    </button>
+    <div class="more-works-dropdown" id="moreWorksDropdown">
+      <div class="dropdown-header">
+        <h4>More Works</h4>
+        <button class="close-btn" onclick="toggleMoreWorks()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="works-list">
+        <a href="https://dipta007.github.io/Q2E/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Query-to-Event Decomposition for Zero-Shot Multilingual Text-to-Video Retrieval</h5>
+            <span class="work-venue">AACL 2025 (main track)</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+        <a href="https://aclanthology.org/2023.starsem-1.31/" class="work-item" target="_blank">
+          <div class="work-info">
+            <h5>Semantically-informed Hierarchical Event Modeling</h5>
+            <span class="work-venue">*SEM 2023</span>
+          </div>
+          <i class="fas fa-external-link-alt"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <main id="main-content">
+    <section class="hero">
+      <div class="hero-body">
+        <div class="container is-max-desktop">
+          <div class="columns is-centered">
+            <div class="column has-text-centered">
+              <h2 class="title is-2 publication-title">If We May De-Presuppose: Robustly Verifying Claims through
+                Presupposition-Free Question Decomposition</h2>
+              <div class="is-size-5 publication-authors">
+                <span class="author-block">
+                  <a href="https://roydipta.com" target="_blank">Shubhashis Roy Dipta</a>,</span>
+                <span class="author-block">
+                  <a href="https://userpages.cs.umbc.edu/ferraro/" target="_blank">Frank Ferraro</a></span>
+                <br>
+                <span class="author-block">University of Maryland, Baltimore County</span>
+
+              </div>
+
+              <div class="column has-text-centered">
+                <div class="publication-links">
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2508.16838" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Paper</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="http://github.com/dipta007/de-Presuppose" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fab fa-github"></i>
+                      </span>
+                      <span>Code</span>
+                    </a>
+                  </span>
+
+                  <span class="link-block">
+                    <a href="https://arxiv.org/abs/2508.16838" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="ai ai-arxiv"></i>
+                      </span>
+                      <span>arXiv</span>
+                    </a>
+                  </span>
+
+                  <!-- poster link -->
+                  <span class="link-block">
+                    <a href="static/pdfs/poster.pdf" target="_blank"
+                      class="external-link button is-normal is-rounded is-dark">
+                      <span class="icon">
+                        <i class="fas fa-file-pdf"></i>
+                      </span>
+                      <span>Poster</span>
+                    </a>
+                </div>
+              </div>
+
+              <centering>
+                <div style="text-align: center;">
+                  <span style="
+                    display: inline-block;
+                    background: #ffe082;
+                    color: #b12a00;
+                    font-weight: bold;
+                    font-size: 1em;
+                    border-radius: 10px;
+                    padding: 0.25em 1em;
+                    margin: 0.5em auto;
+                    box-shadow: 0 0 6px 1px #ffd54f70;
+                    letter-spacing: 1px;
+                    border: 2px solid #ffb300;
+                  ">
+                    🔥 Accepted at <span style="color:#1565c0;">*SEM 2025</span> 🔥
+                  </span>
+                </div>
+              </centering>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <!-- Paper abstract -->
+    <section class="section hero is-light">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-four-fifths">
+            <h2 class="title is-3">Abstract</h2>
+            <div style="display: flex; justify-content: center; align-items: center; gap: 20px;">
+
+              <div class="content has-text-justified">
+                <p>
+                  Prior work has shown that presupposition in generated questions can introduce unverified assumptions,
+                  leading to inconsistencies in claim verification. Additionally, <strong>prompt sensitivity remains a
+                    significant
+                    challenge for large language models (LLMs)</strong>, resulting in performance variance as high as
+                  3-6%. While
+                  recent advancements have reduced this gap, our study demonstrates that prompt sensitivity remains a
+                  persistent issue. To address this, <strong>we propose a structured and robust claim verification
+                    framework that
+                    reasons through presupposition-free, decomposed questions</strong>. Extensive experiments across
+                  multiple
+                  prompts, datasets, and LLMs reveal that even state-of-the-art models remain susceptible to prompt
+                  variance and presupposition. Our method consistently mitigates these issues, achieving up to a
+                  <strong>2-5%
+                    improvement</strong>.
+                </p>
+              </div>
+              <div style="flex: 1;">
+                <img id="teaser" src="static/images/abstract.png">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End paper abstract -->
+
+
+    <!-- Research Results Gallery -->
+    <section class="section research-gallery">
+      <div class="container is-max-desktop">
+        <h2 class="title is-3 has-text-centered">Research Results</h2>
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="static/images/c1.png" alt="Gains are greatest on Complex Claims"
+                    loading="lazy" class="zoomable-image"
+                    onclick="openImageModal('static/images/c1.png', 'Gains are greatest on Complex Claims')">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-5">Gains are greatest on Complex Claims</h4>
+                  <p>Our method shows the highest improvements on complex claims, with no significant degradation on simple claims.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="static/images/c2.png" alt="Questions don\'t need direct answers"
+                    loading="lazy" class="zoomable-image"
+                    onclick="openImageModal('static/images/c2.png', 'Questions don\'t need direct answers')">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-5">Questions don't need direct answers</h4>
+                  <p>We find that questions don't need explict answers, rather they can be used to guide the reasoning process.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="static/images/c3.png" alt="Prompt sensitivity reduction results" loading="lazy"
+                    class="zoomable-image"
+                    onclick="openImageModal('static/images/c3.png', 'Prompt Sensitivity Mitigation')">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-5">Prompt Sensitivity Mitigation</h4>
+                  <p>Our method reduces prompt sensitivity variance by up to 2-5%, providing more stable performance.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="card">
+              <div class="card-image">
+                <figure class="image is-4by3">
+                  <img src="static/images/c4.png" alt="Atomic Claim Coverage" loading="lazy"
+                    class="zoomable-image"
+                    onclick="openImageModal('static/images/c4.png', 'Atomic Claim Coverage')">
+                </figure>
+              </div>
+              <div class="card-content">
+                <div class="content">
+                  <h4 class="title is-5">Atomic Claim Coverage</h4>
+                  <p>Our method covers ~90% of the atomic claims in the dataset, demonstrating its effectiveness in verifying complex claims.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- End research results gallery -->
+
+    <!-- Image Zoom Modal -->
+    <div class="modal" id="imageModal">
+      <div class="modal-background" onclick="closeImageModal()"></div>
+      <div class="modal-content">
+        <div class="box">
+          <div class="has-text-centered">
+            <h3 class="title is-4" id="modalTitle"></h3>
+            <img id="modalImage" src="" alt="" style="max-width: 100%; max-height: 80vh; object-fit: contain;">
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- End image zoom modal -->
+
+
+
+
+    <!-- Youtube video -->
+    <!-- TODO: Replace with your YouTube video ID -->
+    <!-- <section class="hero is-small is-light">
+      <div class="hero-body">
+        <div class="container">
+          <h2 class="title is-3">Video Presentation</h2>
+          <div class="columns is-centered has-text-centered">
+            <div class="column is-four-fifths">
+
+              <div class="publication-video">
+                <iframe src="https://www.youtube.com/embed/JkaxUblCGz0" frameborder="0"
+                  allow="autoplay; encrypted-media" allowfullscreen></iframe>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section> -->
+    <!-- End youtube video -->
+
+    <!--BibTex citation -->
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <div class="bibtex-header">
+          <h2 class="title">BibTeX</h2>
+          <button class="copy-bibtex-btn" onclick="copyBibTeX()" title="Copy BibTeX to clipboard">
+            <i class="fas fa-copy"></i>
+            <span class="copy-text">Copy</span>
+          </button>
+        </div>
+        <pre id="bibtex-code"><code>@article{dipta2025depresupposerobustlyverifyingclaims,
+      title={If We May De-Presuppose: Robustly Verifying Claims through Presupposition-Free Question Decomposition}, 
+      author={Shubhashis Roy Dipta and Francis Ferraro},
+      year={2025},
+      eprint={2508.16838},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2508.16838}, 
+}</code></pre>
+      </div>
+    </section>
+    <!--End BibTex citation -->
+
+
+    <footer class="footer">
+      <div class="container">
+        <div class="columns is-centered">
+          <div class="column is-8">
+            <div class="content">
+
+              <p>
+                This page was built using the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template"
+                  target="_blank">Academic Project Page Template</a> which was adopted from the <a
+                  href="https://nerfies.github.io" target="_blank">Nerfies</a> project page.
+                You are free to borrow the source code of this website, we just ask that you link back to this page in
+                the footer. <br> This website is licensed under a <a rel="license"
+                  href="http://creativecommons.org/licenses/by-sa/4.0/" target="_blank">Creative
+                  Commons Attribution-ShareAlike 4.0 International License</a>.
+              </p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Default Statcounter code for de-presuppose https://dipta007.github.io/De-Presuppose/ -->
+    <script type="text/javascript">
+      var sc_project = 13179488;
+      var sc_invisible = 1;
+      var sc_security = "4007b562"; 
+    </script>
+    <script type="text/javascript" src="https://www.statcounter.com/counter/counter.js" async></script>
+    <noscript>
+      <div class="statcounter"><a title="Web Analytics" href="https://statcounter.com/" target="_blank"><img
+            class="statcounter" src="https://c.statcounter.com/13179488/0/4007b562/1/" alt="Web Analytics"
+            referrerPolicy="no-referrer-when-downgrade"></a></div>
+    </noscript>
+    <!-- End of Statcounter Code -->
+
+</body>
+
+</html>
